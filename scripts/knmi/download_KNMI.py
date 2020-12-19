@@ -6,7 +6,7 @@ api_url = "https://api.dataplatform.knmi.nl/open-data"
 
 def main():
     # Parameters
-    api_key = "5e554e19274a9600012a3eb1b626f95624124cf89e9b5d74c3304520"
+    api_key = ""
     dataset_name = "rad_nl25_rac_mfbs_5min"
     dataset_version = "2"
     max_keys = "10"
