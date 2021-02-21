@@ -10,7 +10,7 @@ import wradlib as wrl
 import os
 import re
 import numpy as np
-os.system('export WRADLIB_DATA=/thesis/data_analysis/dwd')# export WRADLIB_DATA=/thesis/data_analysis/dwd
+os.system('export WRADLIB_DATA=/home/bram/studie/thesis/data_analysis/dwd')# export WRADLIB_DATA=/home/bram/studie/thesis/data_analysis/dwd
 
 # return absoluteFilePaths as a list, similar generator yield function in importHDF5ODIM.py
 def absoluteFilePaths(directory):
@@ -21,8 +21,8 @@ def absoluteFilePaths(directory):
     return result
 
 # I did this per month, give
-input_path = '/thesis/data_analysis/dwd/1Download_dwd/2017'
-output_path = '/thesis/data_analysis/dwd/2aai'
+input_path = '/home/bram/studie/thesis/data_analysis/dwd/1Download_dwd/2017'
+output_path = '/home/bram/studie/thesis/data_analysis/dwd/2aai'
 
 daily_directories = os.listdir(input_path)
 

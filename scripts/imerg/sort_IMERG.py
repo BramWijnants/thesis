@@ -2,6 +2,7 @@
 """
 Created on Fri Oct 16 12:22:09 2020
 
+@author: bram
 """
 import os
 import re
@@ -13,7 +14,7 @@ def absoluteFilePaths(directory):
        for f in filenames:
            yield os.path.abspath(os.path.join(dirpath, f))
 
-path = '/thesis/data_analysis/opera/2tiff_q/2015'
+path = '/home/bram/studie/thesis/data_analysis/opera/2tiff_q/2015'
 
 filenames = absoluteFilePaths(path)
 

@@ -2,12 +2,15 @@
 """
 Script to make daily accumulations from 5-minute radklim (YW) precipitation accumulations
 
+Executed for DWD data from 2015 on 15/10/2020
+
+Author: Bram Wijnants
 """
 import wradlib as wrl 
 import os
 import re
 import numpy as np
-os.system('export WRADLIB_DATA=/thesis/data_analysis/dwd')# export WRADLIB_DATA=/thesis/data_analysis/dwd
+os.system('export WRADLIB_DATA=/home/bram/studie/thesis/data_analysis/dwd')# export WRADLIB_DATA=/home/bram/studie/thesis/data_analysis/dwd
 
 # return absoluteFilePaths as a list, similar generator yield function in importHDF5ODIM.py
 def absoluteFilePaths(directory):
@@ -18,8 +21,8 @@ def absoluteFilePaths(directory):
     return result
 
 # I did this per month, give
-input_path = '/thesis/Data_old/DWD/1Download_dwd/tars/2017/YW2017.002_201707/YW2017.002_20170708'
-output_path = '/thesis/data_analysis/dwd/2aai/'
+input_path = '/media/bram/TOSHIBA EXT/thesis/Data_old/DWD/1Download_dwd/tars/2017/YW2017.002_201707/YW2017.002_20170708'
+output_path = '/home/bram/studie/thesis/data_analysis/dwd/2aai/'
 
 fn_bins = absoluteFilePaths(input_path)
 

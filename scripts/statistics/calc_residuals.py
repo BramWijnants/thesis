@@ -3,6 +3,7 @@
 """
 Created on Tue Oct 20 16:10:05 2020
 
+@author: bram
 """
 import os
 import re
@@ -18,12 +19,15 @@ def absoluteFilePaths(directory):
                result.append(os.path.abspath(os.path.join(dirpath, f)))
     return(result)
 
-#input_folder_dwd = '/thesis/data_analysis/dwd/6alignIMERG/2015'
-input_folder_dwd = '/thesis/data_analysis/dwd/7alignOPERA/2015'
-#input_folder = '/thesis/data_analysis/imerg/4dail/2015/precipitationCal'
-input_folder = '/thesis/data_analysis/opera/3tiff_p_d/2015'
-#output_folder = '/thesis/data_analysis/residuals/1res_IMERG/2015'
-output_folder = '/thesis/data_analysis/residuals/1res_OPERA/2015'
+#input_folder_dwd = '/data/thesis/data_analysis/dwd/6alignIMERG/2015'
+input_folder_dwd = '/data/thesis/data_analysis/dwd/7alignOPERA/2015'
+#input_folder = '/data/thesis/data_analysis/imerg/4dail/2017/precipitationCal'
+input_folder = '/data/thesis/data_analysis/imerg/5aligned_opera/2015/precipitationCal'
+#input_folder = '/data/thesis/data_analysis/imerg/5aligned_opera_spline/2017'
+#input_folder = '/home/bram/studie/thesis/data_analysis/opera/3tiff_p_d/2015'
+output_folder = '/data/thesis/data_analysis/residuals/1res_IMERG_aligned/2015'
+#output_folder = '/data/thesis/data_analysis/residuals/1res_IMERG_splined/2017'
+#output_folder = '/home/bram/studie/thesis/data_analysis/residuals/1res_OPERA/2015'
 
 # get list of filenames
 dwd_filenames = absoluteFilePaths(input_folder_dwd)
@@ -33,7 +37,7 @@ opera_filenames = absoluteFilePaths(input_folder)
 filenames_paired = []
 for i, opera_filename in enumerate(opera_filenames):
     
-    date_string_opera = re.search('ATE_20[\d]{6}', opera_filename).group().strip('ATE_')
+    date_string_opera = re.search('ERG.20[\d]{6}', opera_filename).group().strip('ERG.')
     date_time = datetime.datetime.strptime(date_string_opera, '%Y%m%d')
     pair_dwd_filename = next(fn for fn in dwd_filenames if date_string_opera in fn)
     filenames_paired.append([date_time, pair_dwd_filename, opera_filename])
@@ -59,7 +63,7 @@ for date, dwd_filename, opera_filename in filenames_paired:
                 
                 residuals[i][j] = opera_value - dwd_value
     
-    output_fn = 'Residuals_OPERA-DWD_'+date.strftime('%Y%m%d')+'.tif'
+    output_fn = 'Residuals_IMERG-DWD_'+date.strftime('%Y%m%d')+'.tif'
     full_output_fn = os.path.join(output_folder, output_fn)
     
     #save

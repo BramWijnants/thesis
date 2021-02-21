@@ -2,6 +2,7 @@
 """
 Created on Mon Oct 26 12:53:49 2020
 
+@author: bram
 """
 import os
 import numpy as np
@@ -55,8 +56,8 @@ def calculateAbsoluteResiduals(input_folder):
 #*                               * M * A * I * N *                          *#
 #****************************************************************************#
 
-input_folder_IMERG = '/thesis/data_analysis/residuals/1res_IMERG/2015'
-input_folder_OPERA = '/thesis/data_analysis/residuals/2res_OPERA_masked/2015'
+input_folder_IMERG = '/data/thesis/data_analysis/residuals/1res_IMERG/2015'
+input_folder_OPERA = '/data/thesis/data_analysis/residuals/2res_OPERA_masked/2015'
 
 
 ##############################################################################
@@ -100,11 +101,11 @@ fig, (ax1, ax2) = plt.subplots(1,2)
 fig.suptitle('OPERA residuals 2015')
 ax1.set_ylabel('Frequency')
 ax1.set_xlabel('Residual [mm]')
-ax1.hist(residuals_OPERA, bins=list(range(-40,10,5)),log = False, color = "rosybrown")
+ax1.hist(residuals_OPERA, bins=list(range(-30,30,5)),log = False, color = "rosybrown")
 
 ax2.set_ylabel('Frequency')
 ax2.set_xlabel('Residual [mm]')
-ax2.hist(residuals_OPERA, bins=list(range(0,2200,10)),log = True, color = "rosybrown")
+ax2.hist(residuals_OPERA, bins=list(range(-200,200,20)),log = True, color = "rosybrown")
 plt.show()
 
 absolute_residuals_OPERA = np.array(calculateAbsoluteResiduals(input_folder_OPERA))
@@ -183,8 +184,8 @@ plt.show()
 
 """                              Y E A R L Y                               """
 
-output_folder = '/thesis/data_analysis/residuals/output'
-filenames = absoluteFilePaths(input_folder_OPERA)
+output_folder = '/data/thesis/data_analysis/residuals/output'
+filenames = absoluteFilePaths(input_folder_IMERG)
 
 ds = gdal.Open(filenames[0])
 band = ds.GetRasterBand(1)
@@ -203,10 +204,10 @@ for i, filename in enumerate(filenames[1:]):
     mx += mx2
     count[mx2.mask == False] += 1
 
-mx /= count
+#mx /= count
 
 year = re.search('/[\d]{4}/', filename).group().strip('/')
-output_fn = 'Yearly_residuals_OPERA-DWD_{}.tif'.format(year)
+output_fn = 'Yearly_PCal_IMERG_{}.tif'.format(year)
 full_output_fn = os.path.join(output_folder, output_fn)
     
 #save
@@ -223,8 +224,8 @@ dst_ds.FlushCache()
 
 """                             M O N T H L Y                              """
 
-output_folder = '/thesis/data_analysis/residuals/output/monthly_OPERA'
-filenames = absoluteFilePaths(input_folder_OPERA)
+output_folder = '/home/bram/studie/thesis/data_analysis/residuals/output/monthly_IMERG'
+filenames = absoluteFilePaths(input_folder_IMERG)
 ds=None
 
 for i in range(1,13):
@@ -253,7 +254,7 @@ for i in range(1,13):
     mx /= count
     
     year = re.search('/[\d]{4}/', filename).group().strip('/')
-    output_fn = 'Monthly_residuals_OPERA-DWD_{}{}.tif'.format(year, month_string)
+    output_fn = 'Monthly_residuals_IMERG-DWD_{}{}.tif'.format(year, month_string)
     full_output_fn = os.path.join(output_folder, output_fn)
     
     #save
@@ -276,7 +277,7 @@ for i in range(1,13):
 
 """                              Y E A R L Y                               """
 
-output_folder = '//thesis/data_analysis/residuals/output'
+output_folder = '/home/bram/studie/thesis/data_analysis/residuals/output'
 filenames = absoluteFilePaths(input_folder_OPERA)
 
 ds = gdal.Open(filenames[0])
@@ -299,7 +300,7 @@ for i, filename in enumerate(filenames[1:]): # add count 2darray
 mx /= count
 
 year = re.search('/[\d]{4}/', filename).group().strip('/')
-output_fn = 'Yearly_residuals_mask_OPERA-DWD_{}.tif'.format(year)
+output_fn = 'Yearly_abs_residuals_OPERA-DWD_{}.tif'.format(year)
 full_output_fn = os.path.join(output_folder, output_fn)
 
 #save
@@ -319,8 +320,8 @@ dst_ds.FlushCache()
 ###                          IMERG RESIDUAL SCATTER PLOT                   ###
 ##############################################################################
 
-IMERG_residual_path = '/thesis/data_analysis/residuals/1res_IMERG/2015'
-IMERG_QIND_path = '/thesis/data_analysis/imerg/4dail/2015/precipitationQualityIndex'
+IMERG_residual_path = '/home/bram/studie/thesis/data_analysis/residuals/1res_IMERG/2015'
+IMERG_QIND_path = '/home/bram/studie/thesis/data_analysis/imerg/4dail/2015/precipitationQualityIndex'
 
 filenames_residuals = absoluteFilePaths(IMERG_residual_path)
 filenames_QIND = absoluteFilePaths(IMERG_QIND_path)
@@ -386,9 +387,9 @@ plt.show()
 ###                          IMERG RESIDUAL SCATTER PLOT  QIND STUFF       ###
 ##############################################################################
 
-IMERG_residual_path = '/thesis/data_analysis/residuals/1res_IMERG/2015'
-IMERG_QIND_path = '/thesis/data_analysis/imerg/4dail/2015/precipitationQualityIndex'
-IMERG_randomError_path = '/thesis/data_analysis/imerg/4dail/2015/randomError'
+IMERG_residual_path = '/home/bram/studie/thesis/data_analysis/residuals/1res_IMERG/2015'
+IMERG_QIND_path = '/home/bram/studie/thesis/data_analysis/imerg/4dail/2015/precipitationQualityIndex'
+IMERG_randomError_path = '/home/bram/studie/thesis/data_analysis/imerg/4dail/2015/randomError'
 
 filenames_residuals = absoluteFilePaths(IMERG_residual_path)
 filenames_QIND = absoluteFilePaths(IMERG_QIND_path)
@@ -510,8 +511,8 @@ plt.show()
 ###                          OPERA RESIDUAL SCATTER PLOT                   ###
 ##############################################################################
 
-OPERA_residual_path = '/thesis/data_analysis/residuals/2res_OPERA_mask/2015'
-OPERA_QIND_path = '/thesis/data_analysis/opera/3tiff_q_d/2015'
+OPERA_residual_path = '/home/bram/studie/thesis/data_analysis/residuals/1res_OPERA/2015'
+OPERA_QIND_path = '/home/bram/studie/thesis/data_analysis/opera/3tiff_q_d/2015'
 
 filenames_residuals = absoluteFilePaths(OPERA_residual_path)
 filenames_QIND = absoluteFilePaths(OPERA_QIND_path)
@@ -575,9 +576,9 @@ plt.show()
 ###                          OPERA RESIDUAL SCATTER PLOT "ENHANCED"        ###
 ##############################################################################
 
-DWD_path = '/thesis/data_analysis/dwd/7alignOPERA/2015'
-OPERA_QIND_path = '/thesis/data_analysis/opera/3tiff_q_d/2015'
-OPERA_path = '/thesis/data_analysis/opera/3tiff_p_d/2015'
+DWD_path = '/home/bram/studie/thesis/data_analysis/dwd/7alignOPERA/2015'
+OPERA_QIND_path = '/home/bram/studie/thesis/data_analysis/opera/3tiff_q_d/2015'
+OPERA_path = '/home/bram/studie/thesis/data_analysis/opera/3tiff_p_d/2015'
 
 filenames_OPERA = absoluteFilePaths(OPERA_path)
 filenames_DWD = absoluteFilePaths(DWD_path)

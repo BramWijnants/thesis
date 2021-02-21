@@ -4,6 +4,7 @@ Script to convert 5-minute DWD .bin files to .asc
 
 Created on Tue Oct 27 11:09:23 2020
 
+@author: bram
 """
 import wradlib as wrl 
 import os
@@ -11,7 +12,7 @@ import re
 import time
 
 start_time = time.time()
-os.system('export WRADLIB_DATA=/thesis/data_analysis/dwd')# export WRADLIB_DATA=/thesis/data_analysis/dwd
+os.system('export WRADLIB_DATA=/home/bram/studie/thesis/data_analysis/dwd')# export WRADLIB_DATA=/home/bram/studie/thesis/data_analysis/dwd
 
 # return absoluteFilePaths as a list, similar generator yield function in importHDF5ODIM.py
 def absoluteFilePaths(directory):
@@ -22,8 +23,8 @@ def absoluteFilePaths(directory):
     return result
 
 # I did this per month, give
-input_path = '/thesis/data_analysis/dwd/1Download_dwd/2017/YW2017.002_201712'
-output_path = '/thesis/data_analysis/dwd/3aai/2017/12'
+input_path = '/home/bram/Desktop/raa01-sf_10000-2101011350-dwd---bin--deze'
+output_path = '/home/bram/Desktop'
 
 fn_bins = absoluteFilePaths(input_path)
 
@@ -46,7 +47,7 @@ for fn_bin in fn_bins:
     
     output_fn = fn_bin.split('/')[-1][:-10]+'.asc'
     
-    folder_name = re.search('YW2017.002_20[\d]{6}', fn_bin).group()  
+    folder_name = re.search('-21[\d]{7}', fn_bin).group()  
     output_folder_month = os.path.join(output_path, folder_name)
         
     if not os.path.exists(output_folder_month):

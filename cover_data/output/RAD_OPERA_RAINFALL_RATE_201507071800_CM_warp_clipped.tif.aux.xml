@@ -1,0 +1,55 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="Conventions">ODIM_H5/V2_0</MDI>
+    <MDI key="dataset1_what_enddate">20150707</MDI>
+    <MDI key="dataset1_what_endtime">050500</MDI>
+    <MDI key="dataset1_what_gain">1 </MDI>
+    <MDI key="dataset1_what_nodata">-9999000 </MDI>
+    <MDI key="dataset1_what_offset">0 </MDI>
+    <MDI key="dataset1_what_product">COMP</MDI>
+    <MDI key="dataset1_what_quantity">RATE</MDI>
+    <MDI key="dataset1_what_startdate">20150707</MDI>
+    <MDI key="dataset1_what_starttime">045000</MDI>
+    <MDI key="dataset1_what_undetect">-8888000 </MDI>
+    <MDI key="dataset2_what_enddate">20150707</MDI>
+    <MDI key="dataset2_what_endtime">050500</MDI>
+    <MDI key="dataset2_what_gain">1 </MDI>
+    <MDI key="dataset2_what_nodata">-9999000 </MDI>
+    <MDI key="dataset2_what_offset">0 </MDI>
+    <MDI key="dataset2_what_product">COMP</MDI>
+    <MDI key="dataset2_what_quantity">QIND</MDI>
+    <MDI key="dataset2_what_startdate">20150707</MDI>
+    <MDI key="dataset2_what_starttime">045000</MDI>
+    <MDI key="dataset2_what_undetect">-8888000 </MDI>
+    <MDI key="how_nodes">NOD:deboo,NOD:frcol,NOD:eehar,NOD:frnim,NOD:detur,NOD:seovi,NOD:sease,NOD:deoft,NOD:plgda,NOD:frmcl,NOD:eszar,NOD:demem,NOD:sekir,NOD:frabb,NOD:seosu,NOD:roora,NOD:plpoz,NOD:deemd,NOD:sehud,NOD:bejab,NOD:selul,NOD:dkste,NOD:frbou,NOD:nldbl,NOD:deess,NOD:frave,NOD:sevil,NOD:fropo,NOD:frniz,NOD:selek,NOD:robar,NOD:uking,NOD:chlem,NOD:rotim,NOD:ukpre,NOD:frmtc,NOD:deneu,NOD:frtou,NOD:ukhhd,NOD:deros,NOD:hrbil,NOD:frbla,NOD:dehnr,NOD:frmom,NOD:frlep,NOD:deisn,NOD:frtre,NOD:dedrs,NOD:ukhmy,NOD:ukcob,NOD:sevar,NOD:denhb,NOD:ukdud,NOD:searl,NOD:espma,NOD:ptfar,NOD:fianj,NOD:hunap,NOD:nohgb,NOD:deeis,NOD:frtra,NOD:frcae,NOD:ukthu,NOD:frpla,NOD:deflg,NOD:depro,NOD:defld,NOD:eesyr,NOD:frche,NOD:bewid,NOD:deumd,NOD:frgre,NOD:nosmn,NOD:dkbor,NOD:ukmun,NOD:sekkr,NOD:uklew,NOD:essan,NOD:essse,NOD:frbor,NOD:ptlis,NOD:silis,NOD:escor,NOD:frbol,NOD:ukcyg,NOD:nohas,NOD:nldhl,NOD:esmur,NOD:nobml,NOD:eslpa,NOD:frale,NOD:ukham,NOD:frnan,NOD:dkvir,NOD:lvrix,NOD:romed,NOD:esbar,NOD:eslid,NOD:fikuo,NOD:fivim,NOD:esval,NOD:ukche,NOD:robuc,NOD:sipas,NOD:iesha,NOD:fiika,NOD:plram,NOD:plleg,NOD:hubud,NOD:norsa,NOD:ukcas,NOD:plpas,NOD:dkrom,NOD:esbad,NOD:rocra,NOD:czbrd,NOD:essev,NOD:esmal,NOD:nohur,NOD:hrosi,NOD:plbrz,NOD:esalm,NOD:fikes,NOD:filuo,NOD:dksin,NOD:iedub,NOD:fikor,NOD:hupog,NOD:nosta,NOD:robob,NOD:czska,NOD:norst,NOD:fiuta,NOD:fivan,NOD:plrze,NOD:plswi</MDI>
+    <MDI key="what_date">20150707</MDI>
+    <MDI key="what_object">COMP</MDI>
+    <MDI key="what_source">ORG:247</MDI>
+    <MDI key="what_time">050000</MDI>
+    <MDI key="what_version">H5rad 2.0</MDI>
+    <MDI key="where_LL_lat">31.7462153193251 </MDI>
+    <MDI key="where_LL_lon">-10.4345768386404 </MDI>
+    <MDI key="where_LR_lat">31.987650277945 </MDI>
+    <MDI key="where_LR_lon">29.421038635578 </MDI>
+    <MDI key="where_projdef">+proj=laea +lat_0=55.0 +lon_0=10.0 +x_0=1950000.0 +y_0=-2100000.0 +units=m +ellps=WGS84</MDI>
+    <MDI key="where_UL_lat">67.0228327583087 </MDI>
+    <MDI key="where_UL_lon">-39.5357864125034 </MDI>
+    <MDI key="where_UR_lat">67.6210371027505 </MDI>
+    <MDI key="where_UR_lon">57.8119647501499 </MDI>
+    <MDI key="where_xscale">2000 </MDI>
+    <MDI key="where_xsize">1900 </MDI>
+    <MDI key="where_yscale">2000 </MDI>
+    <MDI key="where_ysize">2200 </MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Metadata>
+      <MDI key="dataset1_data1_data_CLASS">IMAGE </MDI>
+      <MDI key="dataset1_data1_data_IMAGE_VERSION">1.2 </MDI>
+      <MDI key="STATISTICS_MAXIMUM">194.4</MDI>
+      <MDI key="STATISTICS_MEAN">11.599750342722</MDI>
+      <MDI key="STATISTICS_MINIMUM">0</MDI>
+      <MDI key="STATISTICS_STDDEV">11.093270811361</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">41.93</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

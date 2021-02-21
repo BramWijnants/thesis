@@ -20,11 +20,11 @@ def absoluteFilePaths(directory):
                yield os.path.abspath(os.path.join(dirpath, f))
 
 # I did this per month, give
-input_path = '/thesis/data_analysis/MSG/1Download/2017'
-output_path = '/thesis/data_analysis/MSG/1Download/2017'
+input_path = '/home/bram/studie/thesis/data_analysis/MSG/1Download/2017'
+output_path = '/home/bram/studie/thesis/data_analysis/MSG/1Download/2017'
 
 # path to shapefile used for the clip
-shp_path = '/thesis/map/Germany_Poly.shp'
+shp_path = '/home/bram/studie/thesis/map/Germany_Poly.shp'
 
 # gets a list of ALL files within the input directories,
 # generator object, use next(fn_bins) to go trough the filenames

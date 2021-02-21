@@ -6,6 +6,7 @@ import gdal
 options = gdal.WarpOptions(cutlineDSName=shp_path, srcSRS='EPSG:4326', format='GTiff', outputType=gdal.GDT_Float16)
 gdal.Warp('test2.tif', 'NETCDF:"'+imerg_fn+'":precipitationUncal', outputType=gdal.GDT_Float64 , cutlineDSName=shp_path, format='GTiff', srcSRS='EPSG:4326', cropToCutline=True, cutlineLayer='Germany_poly')
 
+Couldnt get the above working
 
 Executed on 15 October 2020
 """
@@ -20,13 +21,13 @@ def absoluteFilePaths(directory):
            yield os.path.abspath(os.path.join(dirpath, f))
 
 # Input IMERG folders, its gonna try ALL files in there so be careful
-input_path = '/thesis/data_analysis/imerg/IMERG_cleaned/2015'
+input_path = '/data/thesis/data_analysis/imerg/IMERG_cleaned/2017'
 
 # Its gonna dump it here, make sure you have a similar folder structure setup
-output_path = '/thesis/data_analysis/imerg/3clip/2015'
+output_path = '/data/thesis/data_analysis/imerg/3clip/2017'
 
 # path to shapefile used for the clip
-shp_path = '/thesis/map/Germany_Poly.shp'
+shp_path = '/home/bram/studie/thesis/map/Germany_Poly.shp'
 
 # datasets to be taken
 datasets = ['precipitationCal', 'precipitationUncal', 'precipitationQualityIndex', 'randomError']
@@ -40,7 +41,15 @@ for fn_bin in fn_bins:
     
     date_string = re.search('IMERG.[\d]{8}', fn_bin).group().strip('IMERG.')
     date_time = time.strptime(date_string, '%Y%m%d')
-    new_path = os.path.join(output_path,str(date_time.tm_mon).zfill(2), str(date_time.tm_mday).zfill(2))
+    new_path1 = os.path.join(output_path,str(date_time.tm_mon).zfill(2))
+
+    if not os.path.exists(new_path1):
+            os.system('mkdir {}'.format(new_path1))
+    
+    new_path = os.path.join(new_path1 , str(date_time.tm_mday).zfill(2))
+    
+    if not os.path.exists(new_path):
+            os.system('mkdir {}'.format(new_path))
     
     for dataset in datasets:
         # create the full output filename
@@ -48,6 +57,5 @@ for fn_bin in fn_bins:
         output_fn = os.path.join(new_path, fn)
         
         # if the ouput file doesnt exist the warp (reprojection and clip) will be executed
-        if not os.path.exists(output_fn):
-            os.system('gdalwarp -s_srs EPSG:4326 -multi -of GTiff -dstnodata -9999000 -cutline {} -cl Germany_Poly -crop_to_cutline NETCDF:"{}":{} {}'.format(shp_path, fn_bin, dataset, output_fn))
+        os.system('gdalwarp -s_srs EPSG:4326 -multi -of GTiff -dstnodata -9999000 -cutline {} -cl Germany_Poly -crop_to_cutline NETCDF:"{}":{} {}'.format(shp_path, fn_bin, dataset, output_fn))
     

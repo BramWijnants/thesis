@@ -33,8 +33,10 @@ def save_multiple_imerg(imerg_path, save=True):
         ds = import_single_imerg(imerg_filename)
         output_fn = imerg_filename.replace('IMERG_download', 'IMERG_cleaned')
 
-        if not os.path.isfile(output_fn):
-            ds.to_netcdf(output_fn)
+        if not os.path.exists(os.path.split(output_fn)[0]):
+            os.system('mkdir {}'.format(os.path.split(output_fn)[0]))
+            
+        ds.to_netcdf(output_fn)
 
 # Import a single imerg file and return as xarray
 def import_single_imerg(imerg_filename, save=False):
@@ -49,19 +51,15 @@ def import_single_imerg(imerg_filename, save=False):
 
     datetimeindex = satelliteIMERG.indexes['time'].to_datetimeindex()
     satelliteIMERG['time'] = datetimeindex
-    satelliteIMERG['precipitationCal'] = satelliteIMERG['precipitationCal']/2 # Convert from mm/hr to mm
-    satelliteIMERG['precipitationUncal'] = satelliteIMERG['precipitationUncal']/2 # Convert from mm/hr to mm
-
-    if save: # not used in a long time, probably not working correctly
-        output_filename = re.sub('[a-z]{3}_\d{4}', "IMERG_cleaned", imerg_filename)
-        print(output_filename)
-        satelliteIMERG.to_netcdf('')
+    satelliteIMERG['precipitationCal'] /= 2 # Convert from mm/hr to mm
+    satelliteIMERG['precipitationUncal'] /= 2 # Convert from mm/hr to mm
+    satelliteIMERG['randomError'] /= 2
 
     return satelliteIMERG
 
 if __name__ == '__main__':
 
-    raw_imerg_path = ''
-    #raw_imerg_file = ''
+    raw_imerg_path = '/data/thesis/data_analysis/imerg/IMERG_download/2017'
+    #raw_imerg_file = '/home/bram/studie/thesis/data_analysis/imerg/IMERG_download/2017/3B-HHR.MS.MRG.3IMERG.20170101-S013000-E015959.0090.V06B.HDF5.nc4'
     #imerg_ds = import_single_imerg(raw_imerg_file, True)
     save_multiple_imerg(raw_imerg_path)

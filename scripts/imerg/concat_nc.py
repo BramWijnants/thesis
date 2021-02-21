@@ -3,6 +3,7 @@
 """
 Created on Mon Oct 19 14:33:00 2020
 
+@author: bram
 """
 #!/usr/bin/env python3
 """
@@ -48,12 +49,12 @@ def save_multiple_imerg(imerg_path):
 
         first_ds = xr.concat([first_ds, ds], 'time')
     
-    first_ds.to_netcdf('/thesis/data_analysis/imerg/5nc/2015/IMERG_2015_precipitationCal.nc')
+    first_ds.to_netcdf('/home/bram/studie/thesis/data_analysis/imerg/5nc/2015/IMERG_2015_precipitationCal.nc')
 
 if __name__ == '__main__':
 
-    raw_imerg_path = '/thesis/data_analysis/imerg/5nc/2015/precipitationCal'
-    #raw_imerg_file = '/thesis/data_analysis/imerg/IMERG_download/2017/3B-HHR.MS.MRG.3IMERG.20170101-S013000-E015959.0090.V06B.HDF5.nc4'
+    raw_imerg_path = '/home/bram/studie/thesis/data_analysis/imerg/5nc/2015/precipitationCal'
+    #raw_imerg_file = '/home/bram/studie/thesis/data_analysis/imerg/IMERG_download/2017/3B-HHR.MS.MRG.3IMERG.20170101-S013000-E015959.0090.V06B.HDF5.nc4'
     #imerg_ds = import_single_imerg(raw_imerg_file, True)
     imerg_ds = save_multiple_imerg(raw_imerg_path)
     

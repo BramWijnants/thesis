@@ -3,7 +3,9 @@
 Script to convert the 5-minute .asc files (created by dwd_import.py) to daily
 accumulations
 
+Created on Tue Oct 27 11:55:39 2020
 
+@author: bram
 """
 import os
 import gdal
@@ -22,8 +24,8 @@ def absoluteFilePaths(directory):
    return(result)
 
 #input folder (monthly) and output folder
-input_folder = '/thesis/data_analysis/dwd/3aai/2017/12'
-output_folder = '/thesis/data_analysis/dwd/4aai/2017/12'
+input_folder = '/home/bram/studie/thesis/data_analysis/dwd/3aai/2017/12'
+output_folder = '/home/bram/studie/thesis/data_analysis/dwd/4aai/2017/12'
 
 # get all directory names (one for every day) in the month folder
 day_directories = os.listdir(input_folder)

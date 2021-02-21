@@ -17,8 +17,8 @@ def absolute_file_paths(directory):
                 result.append(os.path.join(dirpath, f))
     return result
 
-input_path = '/thesis/data_analysis/opera/2tiff_p/2017'
-output_path = '/thesis/data_analysis/opera/3tiff_p_d/2017'
+input_path = '/media/bram/Data/thesis/data_analysis/opera/2tiff_p/2015'
+output_path = '/media/bram/Data/thesis/data_analysis/opera/3tiff_p_d/2015'
 
 months = os.listdir(input_path)
 
@@ -33,7 +33,7 @@ for month_dir in months:
 
         filenames = absolute_file_paths(days_path)
 
-        if len(filenames) == 96:
+        if len(filenames) == 96 and not os.path.exists(output_path+filenames[0][62:-11]+'.tif'):
             first_file = gdal.Open(filenames[0])
             first_array = np.array(first_file.GetRasterBand(1).ReadAsArray())
 
@@ -46,24 +46,22 @@ for month_dir in months:
 
             for filename in filenames[1:]:
 
-                if not os.path.exists(output_path+filename[63:]):
-
                     file = gdal.Open(filename)
                     array = np.array(file.GetRasterBand(1).ReadAsArray())
 
                     if '_q' not in input_path:
                         array[array == -8888000] = 0
-                        for i, row in enumerate(array):
-                            for j, value in enumerate(row):
-                                if value >= 0 and first_array[i][j] >= 0:
-                                    first_array[i][j] += value
-                                elif first_array[i][j] < 0 <= value:
-                                    first_array[i][j] == value
+                        for i in range(len(array)):
+                            for j in range(len(array[i])):
+                                if array[i][j] != -9999000 and first_array[i][j] != -9999000:
+                                    first_array[i][j] += array[i][j]
+                                else:
+                                    first_array[i][j] = -9999000
 
                     if '_q' in input_path:
                         for i, row in enumerate(array):
                             for j, value in enumerate(row):
-                                if value > 0:
+                                if value >= 0:
                                     count[i][j] += 1
                                     if first_array[i][j] < 0:
                                         first_array[i][j] = value
@@ -77,10 +75,10 @@ for month_dir in months:
                             first_array[i][j] /= value
 
             else:
-                first_array[first_array != -9999000] *= 0.25
+                first_array[first_array != -9999000] *= 0.25 
 
             driver = gdal.GetDriverByName('GTiff')
-            dst_ds = driver.CreateCopy(output_path+filename[63:-6]+'.tif', first_file)
+            dst_ds = driver.CreateCopy(output_path+filename[62:-11]+'.tif', first_file)
 
             dst_band = dst_ds.GetRasterBand(1)
             dst_band.WriteArray(first_array)

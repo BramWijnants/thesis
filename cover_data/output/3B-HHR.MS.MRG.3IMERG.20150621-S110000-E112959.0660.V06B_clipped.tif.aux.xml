@@ -1,0 +1,88 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="lat#axis">Y</MDI>
+    <MDI key="lat#bounds">lat_bnds</MDI>
+    <MDI key="lat#DimensionNames">lat</MDI>
+    <MDI key="lat#fullnamepath">/Grid/lat</MDI>
+    <MDI key="lat#LongName">Latitude at the center of
+			0.10 degree grid intervals of latitude
+			from -90 to 90.</MDI>
+    <MDI key="lat#origname">lat</MDI>
+    <MDI key="lat#standard_name">latitude</MDI>
+    <MDI key="lat#units">degrees_north</MDI>
+    <MDI key="lat#_FillValue">nan</MDI>
+    <MDI key="lon#axis">X</MDI>
+    <MDI key="lon#bounds">lon_bnds</MDI>
+    <MDI key="lon#DimensionNames">lon</MDI>
+    <MDI key="lon#fullnamepath">/Grid/lon</MDI>
+    <MDI key="lon#LongName">Longitude at the center of
+			0.10 degree grid intervals of longitude 
+			from -180 to 180.</MDI>
+    <MDI key="lon#origname">lon</MDI>
+    <MDI key="lon#standard_name">longitude</MDI>
+    <MDI key="lon#units">degrees_east</MDI>
+    <MDI key="lon#_FillValue">nan</MDI>
+    <MDI key="NC_GLOBAL#DODS_EXTRA.Unlimited_Dimension">Grid_time</MDI>
+    <MDI key="NC_GLOBAL#FileHeader">DOI=10.5067/GPM/IMERG/3B-HH/06;
+DOIauthority=http://dx.doi.org/;
+DOIshortName=3IMERGHH;
+AlgorithmID=3IMERGHH;
+AlgorithmVersion=3IMERGH_6.3;
+FileName=3B-HHR.MS.MRG.3IMERG.20150621-S120000-E122959.0720.V06B.HDF5;
+SatelliteName=MULTI;
+InstrumentName=MERGED;
+GenerationDateTime=2019-06-08T16:50:33.000Z;
+StartGranuleDateTime=2015-06-21T12:00:00.000Z;
+StopGranuleDateTime=2015-06-21T12:29:59.999Z;
+GranuleNumber=;
+NumberOfSwaths=0;
+NumberOfGrids=1;
+GranuleStart=;
+TimeInterval=HALF_HOUR;
+ProcessingSystem=PPS;
+ProductVersion=V06B;
+EmptyGranule=NOT_EMPTY;
+MissingData=;
+</MDI>
+    <MDI key="NC_GLOBAL#FileInfo">DataFormatVersion=6a;
+TKCodeBuildVersion=0;
+MetadataVersion=6a;
+FormatPackage=HDF5-1.8.9;
+BlueprintFilename=GPM.V6.3IMERGHH.blueprint.xml;
+BlueprintVersion=BV_62;
+TKIOVersion=3.93;
+MetadataStyle=PVL;
+EndianType=LITTLE_ENDIAN;
+</MDI>
+    <MDI key="NC_GLOBAL#Grid.fullnamepath">/Grid</MDI>
+    <MDI key="NC_GLOBAL#Grid.GridHeader">BinMethod=ARITHMETIC_MEAN;
+Registration=CENTER;
+LatitudeResolution=0.1;
+LongitudeResolution=0.1;
+NorthBoundingCoordinate=90;
+SouthBoundingCoordinate=-90;
+EastBoundingCoordinate=180;
+WestBoundingCoordinate=-180;
+Origin=SOUTHWEST;
+</MDI>
+    <MDI key="NC_GLOBAL#history">2021-01-02 11:23:20 GMT Hyrax-1.15.4 https://gpm1.gesdisc.eosdis.nasa.gov/opendap/GPM_L3/GPM_3IMERGHH.06/2015/172/3B-HHR.MS.MRG.3IMERG.20150621-S120000-E122959.0720.V06B.HDF5.nc?precipitationCal[0:0][1743:2079][1311:1524],time,lon[1743:2079],lat[1311:1524]</MDI>
+    <MDI key="NETCDF_DIM_EXTRA">{time}</MDI>
+    <MDI key="NETCDF_DIM_time_DEF">{1,10}</MDI>
+    <MDI key="NETCDF_DIM_time_VALUES">0</MDI>
+    <MDI key="precipitationCal#_FillValue">nan</MDI>
+    <MDI key="time#calendar">proleptic_gregorian</MDI>
+    <MDI key="time#units">days since 2015-06-21 12:00:00</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Metadata>
+      <MDI key="NETCDF_DIM_time">0</MDI>
+      <MDI key="NETCDF_VARNAME">precipitationCal</MDI>
+      <MDI key="STATISTICS_MAXIMUM">16.699201583862</MDI>
+      <MDI key="STATISTICS_MEAN">0.91288037556759</MDI>
+      <MDI key="STATISTICS_MINIMUM">0</MDI>
+      <MDI key="STATISTICS_STDDEV">1.3869547352026</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">9.629</MDI>
+      <MDI key="_FillValue">nan</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

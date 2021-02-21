@@ -16,15 +16,17 @@ import os
 def absoluteFilePaths(directory): 
    for dirpath,_,filenames in os.walk(directory):
        for f in filenames:
-           if f[-3:] == 'tif':
+           if f.endswith('tif'):
                yield os.path.abspath(os.path.join(dirpath, f))
 
+
+
 # I did this per month, give
-input_path = '/thesis/data_analysis/dwd/4aai/2017'
-output_path = '/thesis/data_analysis/dwd/5wsg/2017'
+input_path = '/home/bram/studie/thesis/data_analysis/dwd/4aai/2017'
+output_path = '/home/bram/studie/thesis/data_analysis/dwd/5wsg/2017'
 
 # path to shapefile used for the clip
-shp_path = '/thesis/map/Germany_Poly.shp'
+shp_path = '/home/bram/studie/thesis/map/Germany_Poly.shp'
 
 # gets a list of ALL files within the input directories,
 # generator object, use next(fn_bins) to go trough the filenames

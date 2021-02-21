@@ -53,13 +53,13 @@ def import_single_msg(imerg_filename, save=False):
 
     if save: # not used in a long time, probably not working correctly
 
-        selectedVariables['precip'][0].to_netcdf('TEST_MSG.nc4')
+        selectedVariables['precip'][0].to_netcdf('/home/bram/Desktop/TEST_MSG.nc4')
 
     return filesIMERG
 
 if __name__ == '__main__':
 
-    raw_msg_path = '/thesis/data_analysis/MSG/1Download/SEVIR_OPER_R___MSGCPP__L2__20180101T000000_20180102T000000_0001.nc'
+    raw_msg_path = '/home/bram/studie/thesis/data_analysis/MSG/1Download/SEVIR_OPER_R___MSGCPP__L2__20180101T000000_20180102T000000_0001.nc'
     
     import_single_msg(raw_msg_path, True)
     
